@@ -18,19 +18,19 @@ public class OrderTakerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         Cookie userIdCookie = null;
         final Cookie[] myCookies = request.getCookies();
         if (myCookies != null) {
             for (Cookie cookie : myCookies) {
-                if(CookieManager.USER_ID_COOKIE.equals(cookie.getName())) {
+                if (CookieManager.USER_ID_COOKIE.equals(cookie.getName())) {
                     userIdCookie = cookie;
                     break;
                 }
-                
+
             }
         }
-        if(userIdCookie == null) {
+        if (userIdCookie == null) {
             userIdCookie = CookieManager.createUserIdCookie("guest", request);
             response.addCookie(userIdCookie);
         }
